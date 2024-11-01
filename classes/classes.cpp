@@ -4,36 +4,44 @@ using namespace std;
 
 
 
+//****************************/
+//       SharedMethodes 
+//****************************/
+class SharedMethodes {
+    private:
+        int id;
+        string name;
+    public:
+    void setId(int id){
+            this->id = id;
+        }
+        void setName(string name){
+            this->name = name;
+        }
+        int getId(){
+            return this->id;
+        }
+        string getName(){
+            return this->name;
+        }
+
+};
 
 
 
 //****************************/
 //       COMMON
 //****************************/
-class Common {
+class Common : public SharedMethodes {
     private :
-        int id;
-        string name;
         int age ;
         string phoneNumber;
     public :
-        void setId(int id){
-            this->id = id;
-        }
-        void setName(string name){
-            this->name = name;
-        }
         void setAge(int Age){
             this->age = Age;
         }
         void setPhoneNumber(string phoneNumber){
             this->phoneNumber = phoneNumber;
-        }
-        int getId(){
-            return id;
-        }
-        string getName(){
-            return name;
         }
         int getAge(){
             return age;
@@ -51,12 +59,21 @@ class Common {
 class Teacher: public Common {
     private :
         int salary;
+        int studentsIds[5];
     public :
         void setSalary(int salary){
             this->salary = salary;
         }
+        void setStudents(int students[5]){
+            for(int i=0; i<sizeof(studentsIds)/sizeof(studentsIds[0]); i++){
+                this->studentsIds[i] = students[i];
+            }
+        }
         double getSalary(){
             return salary;
+        }
+        int * getStudentsIds(){
+            return studentsIds;
         }
 };
 
@@ -73,7 +90,7 @@ class Student: public Common{
             this->gpa = gpa;
         }
         void setTeachers(Teacher tab[5]){
-            for(int i=0; i<5; i++){
+            for(int i=0; i<sizeof(teachers)/sizeof(teachers[0]); i++){
                 this->teachers[i] = tab[i];
             }
         }
@@ -81,10 +98,27 @@ class Student: public Common{
             return gpa;
         }
         Teacher * getTeachers(){
-            Teacher tab[5];
-            for(int i=0; i<5; i++){
-                tab[i] = this->teachers[i];
-            }
-            return tab;
+            return this->teachers;
         }
 };
+
+//****************************/
+//       COURSE
+//****************************/
+
+class Course: public SharedMethodes {
+    private:
+        double hour;
+    public:
+        
+        void setHour(double hour){
+            this->hour = hour;
+        }
+        double getHour(){
+            return this->hour;
+        }
+
+
+};
+
+
