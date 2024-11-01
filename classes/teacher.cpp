@@ -1,9 +1,4 @@
-#include<iostream>
-#include <string>
 #include "common.cpp"
-
-using namespace std;
-
 
 class Teacher: public Common {
     private :

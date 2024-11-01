@@ -1,8 +1,6 @@
-#include<iostream>
-#include <string>
 #include "common.cpp"
 
-using namespace std;
+
 
 class Student: public Common{
     private :
